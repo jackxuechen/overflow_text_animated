@@ -70,6 +70,9 @@ class _OverflowTextAnimatedState extends State<OverflowTextAnimated> {
   /// [infiniteLoop] - save position of scroll
   double _scrollPosition = 0.0;
 
+  /// [_autoScrollTimer] - auto scroll timer
+  Timer? _autoScrollTimer;
+
   @override
   void initState() {
     super.initState();
@@ -122,7 +125,7 @@ class _OverflowTextAnimatedState extends State<OverflowTextAnimated> {
     _scrollController.addListener(_scrollListener);
 
     /// Auto scroll with periodic
-    Timer.periodic(widget.animateDuration, (Timer timer) {
+    _autoScrollTimer = Timer.periodic(widget.animateDuration, (Timer timer) {
       _autoScroll();
     });
   }
@@ -191,6 +194,9 @@ class _OverflowTextAnimatedState extends State<OverflowTextAnimated> {
 
   @override
   void dispose() {
+    /// dispose timer
+    _autoScrollTimer?.cancel();
+
     /// dispose controller
     _scrollController.dispose();
     super.dispose();

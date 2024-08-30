@@ -2,7 +2,7 @@ name: overflow_text_animated_example
 description: Demonstrates how to use the overflow_text_animated plugin.
 
 environment:
-  sdk: '>=3.1.1 <4.0.0'
+  sdk: '>=2.17.0 <4.0.0'
 
 dependencies:
   flutter:
