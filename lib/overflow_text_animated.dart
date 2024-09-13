@@ -154,6 +154,16 @@ class _OverflowTextAnimatedState extends State<OverflowTextAnimated> {
   }
 
   @override
+  void didUpdateWidget(OverflowTextAnimated oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.text != widget.text) {
+      setState(() {
+        _text = widget.text;
+      });
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, size) {
       final span = TextSpan(
